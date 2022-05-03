@@ -1,0 +1,103 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+      title: const Text("Restaurant"),
+      ),
+      body: Image.network(
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const MenuScreen()),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class MenuScreen extends StatelessWidget {
+  const MenuScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+      title: const Text("Food Menu"),
+      ),
+      body: ListView(
+        children:[
+          ListTile(
+            leading: Image.network("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=481&q=80"),
+            title: const Text("Pizza"),
+            subtitle: const Text("Rs. 200"),
+          ),
+          ListTile(
+            leading: Image.network("https://images.unsplash.com/photo-1608219994488-cc269412b3e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
+            title: const Text("French Fries"),
+            subtitle: const Text("Rs. 80"),
+          ),
+          ListTile(
+            leading: Image.network("https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"),
+            title: const Text("Burger"),
+            subtitle: const Text("Rs. 120"),
+          ),
+          ListTile(
+            leading: Image.network("https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1530&q=80"),
+            title: const Text("Coke"),
+            subtitle: const Text("Rs 50"),
+          ),
+          ListTile(
+            leading: Image.network("https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
+            title: const Text("Noodles"),
+            subtitle: const Text("Rs 100"),
+          ),
+          ListTile(
+            leading: Image.network("https://images.unsplash.com/photo-1512568400610-62da28bc8a13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
+            title: const Text("Coffee"),
+            subtitle: const Text("Rs 50"),
+          ),
+          ListTile(
+            leading: Image.network("https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1442&q=80"),
+            title: const Text("Tea"),
+            subtitle: const Text("Rs 40"),
+          ),
+          ListTile(
+            leading: Image.network("https://images.unsplash.com/photo-1638688569176-5b6db19f9d2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
+            title: const Text("Water"),
+            subtitle: const Text("Rs 30"),
+          ),
+          
+        ]
+      ),
+    );
+  }
+}

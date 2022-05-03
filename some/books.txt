@@ -1,0 +1,151 @@
+//user input -ideone
+
+code -
+
+import 'dart:io';
+void main() {
+ print("Enter customers name");
+ var name = stdin.readLineSync();
+ print("Enter customer account no:");
+ int acc_no = int.parse(stdin.readLineSync());
+ print("Enter customer balance:");
+ int balance = int.parse(stdin.readLineSync());
+ print("Enter type of account (Savings/Current):");
+ var atype = stdin.readLineSync().toLowerCase();
+ if (atype == "savings") {
+ Savings s = Savings(balance, name, acc_no);
+ s.print_bal();
+ print("Enter the amount to be deposited:");
+ int d_amt = int.parse(stdin.readLineSync());
+ s.deposit(d_amt);
+ print("Enter the amount to be withdrawn:");
+ int w_amt = int.parse(stdin.readLineSync());
+ s.withdraw(w_amt);
+ s.interest(2, 1);
+ } else if (atype == "current") {
+ Current c = Current(balance, name, acc_no);
+ c.print_bal();
+ print("Enter the amount to be deposited:");
+ int d_amt = int.parse(stdin.readLineSync());
+ c.deposit(d_amt);
+ print("Enter the amount to be withdrawn:");
+ int w_amt = int.parse(stdin.readLineSync());
+ c.withdraw(w_amt);
+ c.interest(2, 1);
+ } else {
+ print("Enter correct account type!!");
+ }
+}
+
+
+class Accounts {
+ int balance = 0;
+ var name = "";
+ int acc_no = 0;
+ Accounts(int balance, var name, int acc_no) {
+ this.balance = balance;
+ this.name = name.toUpperCase();
+ this.acc_no = acc_no;
+ }
+ void print_bal() {
+ print(
+ "The balance for '${this.name}' account number '${this.acc_no}' is = ${this.balance}");
+ }
+ void deposit(int dep_amount) {
+ print("Amount deposited=${dep_amount}");
+ this.balance += dep_amount;
+ print(
+ "The balance for '${this.name}' account number '${this.acc_no}' after depositing is = ${this.balance}");
+ }
+ void withdraw(int wid_amount) {
+ print("Amount to be Withdrawn=${wid_amount}");
+ if (this.balance < wid_amount) {
+ print("Insufficient balance!!!");
+ } else {
+ this.balance -= wid_amount;
+ print( "The balance for '${this.name}' account number '${this.acc_no}' after withdrawal is = ${this.balance}");
+ } }
+ void interest(int rate, int time) {
+ print(
+ "Interest gained on '${this.balance}': ${balance * (1 + rate * time)}");
+ }
+
+}
+
+
+class Savings extends Accounts {
+ Savings(int balance, var name, int acc_no) : super(balance, name, acc_no) {}
+ void interest(int rate, int time) {
+ print(
+ "Interest gained on '${this.balance}': ${super.balance * (1 + rate * time)}");
+ }
+}
+
+
+class Current extends Accounts {
+ Current(int balance, var name, int acc_no) : super(balance, name, acc_no) {}
+ void interest(int rate, int time) {
+ print(
+ "Interest gained on '${this.balance}': ${super.balance * (1 + rate * time)}");
+ }
+}
+
+input - 
+
+unnati
+1234
+10000
+savings
+200
+100
+
+
+//without user input - dartpad
+
+class Library{
+  
+  List<Books> book = [];
+}
+class Books{
+  late int id;
+  late int qty;
+  late String name;
+  
+  Books({
+    required this.id,
+    required this.qty,
+    required this.name,
+  });
+  
+  void bookDetails() {
+    print('General book $id - $name - $qty');
+  }
+}
+
+class CommBook extends Books{
+  CommBook({id, name, qty}): super(id: id,name: name,qty: qty);
+  
+  //bookDetails method getting overridden
+  @override
+  void bookDetails(){
+    print('CommBook $id - $name - $qty');
+  }
+}
+class EngBook extends Books{
+  EngBook({id, name, qty}): super(id: id,name: name,qty: qty);
+  //bookDetails method getting overridden
+  @override
+  void bookDetails(){
+    print('EngBook $id - $name - $qty');
+  }
+}
+
+void main() {
+  Library lib = Library();
+  Books book1 = Books(id:2, name:'Grammar', qty: 4);
+  lib.book.add(EngBook(id: 1, name: 'Dark Knight', qty: 5));
+  lib.book.add(CommBook(id: 1, name: 'Wings of Fire', qty: 5));
+  book1.bookDetails();
+  lib.book[0].bookDetails();
+  lib.book[1].bookDetails();
+}

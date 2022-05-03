@@ -61,7 +61,7 @@ class HangmanV3 {
         print("Enter a correct input");
       }
       if (!output.contains("_")) {
-        print("You won Bitch");
+        print("You won Tchalla");
         return;
       }
     }

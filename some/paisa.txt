@@ -1,0 +1,100 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MaterialApp(home: Convertor()));
+
+class Convertor extends StatefulWidget {
+  const Convertor({Key? key}) : super(key: key);
+  _ConvertorState createState() => _ConvertorState();
+}
+
+class _ConvertorState extends State<Convertor> {
+  @override
+  void ctof() {
+    String cel = c.text;
+    double farh = double.parse(cel) * 1.8 + 32;
+    fr.text = "$farh";
+  }
+
+  
+  void dowork() {
+    String x = inr.text;
+    double f1 = double.parse(x)/80.68;
+    euro.text = "$f1";
+  }
+
+  final c = TextEditingController();
+  final fr = TextEditingController();  
+  
+  final inr = TextEditingController();
+  final euro = TextEditingController();
+  
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Convertor'),
+        ),
+        body: Column(
+          children: <Widget>[
+            TextField(
+                controller: c,
+                decoration: InputDecoration(
+                  labelText: 'Celsius',
+                )
+            ),
+            SizedBox(
+              width: 60.0,
+              height: 20.0,
+            ),
+            TextField(
+                controller: fr,
+                decoration: InputDecoration(
+                  labelText: 'Fahreneit',
+                )
+            ),
+            SizedBox(
+              width: 60.0,
+              height: 30.0,
+            ),
+            RaisedButton(
+              onPressed: ctof,
+              child: Text('CONVERT'),
+            ),
+            SizedBox(
+              width: 60.0,
+              height: 20.0,
+            ),
+
+            TextField(
+                controller: inr,
+                decoration: InputDecoration(
+                  labelText: 'INR',
+                )
+            ),
+            SizedBox(
+              width: 60.0,
+              height: 30.0,
+            ),
+            TextField(
+                controller: euro,
+                decoration: InputDecoration(
+                  labelText: 'EURO',
+                )
+            ),
+            SizedBox(
+              width: 60.0,
+              height: 30.0,
+            ),
+            RaisedButton(
+              onPressed: dowork,
+              child: Text('CONVERT'),
+            ),
+            SizedBox(
+              width: 60.0,
+              height: 30.0,
+            ),
+          ],
+        )
+    );
+  }
+
+}
